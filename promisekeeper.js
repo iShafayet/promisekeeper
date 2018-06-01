@@ -63,3 +63,25 @@ class PromiseKeeper {
   }
 
 }
+
+const mapList = (limit, list, fn) => {
+  return new Promise((accept, reject) => {
+    let index = 0;
+    let keeper = new PromiseKeeper(limit);
+    keeper.onFinish(() => accept());
+    keeper.onError(err => reject(err));
+    keeper.onFree(keep => {
+      if (index === list.length) {
+        keep(null);
+        return;
+      }
+      keep(fn(list[index], index, list));
+      index += 1;
+      return;
+    });
+    keeper.start();
+  });
+}
+
+exports.PromiseKeeper = PromiseKeeper;
+exports.mapList = mapList;
