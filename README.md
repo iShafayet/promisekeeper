@@ -14,7 +14,7 @@ Promise.all(userList.map(user => {
 ```
 There is nothing wrong with the above code. Nothing until your `userList` is at the scale of `10,000,000`. Imagine all the calls to `sendPolicyUpgradeMail` occuring simultaneously. Your RAM is going to be overflowed pretty soon, especially if you're doing any kind of template rendering inside that method. Same is true for database calls and most i/o.
 
-Of course, ideally you would have these implemented in another microservice but even then, your promises will take up memoery at the very least linearly to your `list`. That's where **PromiseKeeper** comes into play. It manages your promises automatically. Instead of the above code, you write - 
+Of course, ideally you would have these implemented in another microservice but even then, your promises will take up memory at the very least linearly to your `list`. That's where **PromiseKeeper** comes into play. It manages your promises automatically. Instead of the above code, you write - 
 
 ```js
 PromiseKeeper.mapList(10000, userList, (user) => {
