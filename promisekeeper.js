@@ -37,7 +37,7 @@ class PromiseKeeper {
       });
     }).catch(ex => {
       this.state = this.STATES.ERROR;
-      this.errorCbfn();
+      this.errorCbfn(ex);
     });
   }
 
@@ -69,7 +69,9 @@ const mapList = (limit, list, fn) => {
     let index = 0;
     let keeper = new PromiseKeeper(limit);
     keeper.onFinish(() => accept());
-    keeper.onError(err => reject(err));
+    keeper.onError(err => {
+      reject(err);
+    });
     keeper.onFree(keep => {
       if (index === list.length) {
         keep(null);

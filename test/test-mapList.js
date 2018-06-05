@@ -61,6 +61,24 @@ describe('mapList', () => {
       });
     });
 
+    it('Error should stop propagation', testDoneFn => {
+      mapList(1, (new Array(6)).fill(100), async (item, index) => {
+        await new Promise((accept, reject) => {
+          if (index === 2) {
+            return reject(new Error("Test"));
+          }
+          accept();
+        });
+        return;
+      }).then(() => {
+        // throw new Error("This code should never be executed");
+      }).catch(ex => {
+        expect(ex.message).to.equal("Test");
+        testDoneFn();
+      });
+    });
+
+
   });
 
 });
