@@ -44,7 +44,7 @@ Install with `npm i promisekeeper`.
 
 Require with `const PromiseKeeper = require('promisekeeper');`
 
-## What if I'm not using `Array.map`
+## What if I'm not using `Array.map`?
 
 There is a lower level class `PromiseKeeper.PromiseKeeper`. It can be used to manage other kind of bulk promises. Documentation on that is coming soon.
 
