@@ -40,9 +40,9 @@ const myfunc = async () => {
 
 ## How to use?
 
-Install with `npm i promisekeeper`.
+Install with `npm i @ishafayet/promisekeeper`.
 
-Require with `const PromiseKeeper = require('promisekeeper');`
+Require with `const PromiseKeeper = require('@ishafayet/promisekeeper');`
 
 ## What if I'm not using `Array.map`?
 

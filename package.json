@@ -1,6 +1,6 @@
 {
-  "name": "promisekeeper",
-  "version": "0.0.1",
+  "name": "@ishafayet/promisekeeper",
+  "version": "0.0.2",
   "description": "An industrial grade native promise scheduling library. Automatically limit number of promises running in parallel.",
   "main": "index.js",
   "scripts": {
